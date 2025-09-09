@@ -1,15 +1,14 @@
 const { Router } = require('express');
-const petModel = require('../dao/models/pet.model');
+const PetController = require('../controllers/pet.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
+const petController = new PetController();
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-    try {
-        const pets = await petModel.find({});
-        res.send({ status: 'success', payload: pets });
-    } catch (error) {
-        res.status(500).send({ status: 'error', message: 'Error al obtener mascotas: ' + error.message });
-    }
-});
+router.get('/', authMiddleware, petController.getAllPets);
+router.get('/:id', authMiddleware, petController.getPetById);
+router.post('/', authMiddleware, petController.createPet);
+router.put('/:id', authMiddleware, petController.updatePet);
+router.delete('/:id', authMiddleware, petController.deletePet);
 
 module.exports = router;

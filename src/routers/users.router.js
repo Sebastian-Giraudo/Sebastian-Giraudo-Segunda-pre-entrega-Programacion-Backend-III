@@ -1,15 +1,18 @@
 const { Router } = require('express');
-const userModel = require('../dao/models/user.model');
+const UserController = require('../controllers/user.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
+const authorization = require('../middlewares/authorization.middleware');
+const userController = new UserController();
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-    try {
-        const users = await userModel.find({});
-        res.send({ status: 'success', payload: users });
-    } catch (error) {
-        res.status(500).send({ status: 'error', message: 'Error al obtener usuarios: ' + error.message });
-    }
-});
+// Todos los usuarios autenticados pueden obtener la lista de usuarios.
+router.get('/', authMiddleware, userController.getAllUsers);
+router.get('/:id', authMiddleware, userController.getUserById);
+
+// Solo los administradores pueden crear, actualizar y eliminar usuarios.
+router.post('/', authMiddleware, authorization('admin'), userController.createUser);
+router.put('/:id', authMiddleware, authorization('admin'), userController.updateUser);
+router.delete('/:id', authMiddleware, authorization('admin'), userController.deleteUser);
 
 module.exports = router;

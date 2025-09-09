@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const mocksRouter = require('./routers/mock.router.js');
 const usersRouter = require('./routers/users.router.js')
 const petsRouter = require('./routers/pets.router.js'); 
+const sessionsRouter = require('./routers/sessions.router.js');
+const errorHandler = require('./middlewares/errorHandler.middleware.js');
 require('dotenv').config();
 
 const app = express();
@@ -18,6 +20,9 @@ mongoose.connect(MONGO_URL)
 app.use('/api/mocks', mocksRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/pets', petsRouter);
+app.use('/api/sessions', sessionsRouter);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
