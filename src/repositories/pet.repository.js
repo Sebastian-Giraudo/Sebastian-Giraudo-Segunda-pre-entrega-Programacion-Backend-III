@@ -1,4 +1,4 @@
-const petModel = require('../dao/models/pet.model');
+import petModel from '../dao/models/pet.model.js';
 
 class PetRepository {
     async getAll() {
@@ -22,4 +22,4 @@ class PetRepository {
     }
 }
 
-module.exports = PetRepository;
+export default PetRepository;

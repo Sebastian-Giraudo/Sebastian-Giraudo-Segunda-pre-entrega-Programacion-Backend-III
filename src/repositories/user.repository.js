@@ -1,4 +1,4 @@
-const userModel = require('../dao/models/user.model');
+import userModel from '../dao/models/user.model.js';
 
 class UserRepository {
     async getAll() {
@@ -22,4 +22,4 @@ class UserRepository {
     }
 }
 
-module.exports = UserRepository;
+export default UserRepository;

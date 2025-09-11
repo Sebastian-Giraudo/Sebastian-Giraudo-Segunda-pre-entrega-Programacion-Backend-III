@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 // Clave secreta para firmar los tokens JWT. Debe ser una variable de entorno en producción.
 const JWT_SECRET = 'coderSecret';
@@ -33,7 +33,7 @@ const verifyToken = (token) => {
     });
 };
 
-module.exports = {
+export {
     createHash,
     isValidPassword,
     generateToken,

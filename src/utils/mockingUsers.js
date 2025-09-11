@@ -1,5 +1,6 @@
-const { faker } = require('@faker-js/faker');
-const bcrypt = require('bcrypt');
+import { faker } from '@faker-js/faker';
+import bcrypt from 'bcrypt';
+
 
 const hashedPassword = bcrypt.hashSync('coder123', 10);
 
@@ -23,4 +24,4 @@ const generateMockUsers = (quantity) => {
     return users;
 };
 
-module.exports = { generateMockUsers };
+export { generateMockUsers };

@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 // Clave secreta para firmar los tokens JWT.
 const JWT_SECRET = 'coderSecret';
@@ -21,4 +21,4 @@ const authMiddleware = (req, res, next) => {
     });
 };
 
-module.exports = authMiddleware;
+export default authMiddleware;

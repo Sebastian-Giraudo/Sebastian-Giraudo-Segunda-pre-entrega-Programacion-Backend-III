@@ -1,4 +1,4 @@
-const PetService = require('../services/pet.service');
+import PetService from '../services/pet.service.js';
 const petService = new PetService();
 
 class PetController {
@@ -62,4 +62,4 @@ class PetController {
     }
 }
 
-module.exports = PetController;
+export default PetController;

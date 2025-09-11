@@ -14,4 +14,4 @@ const authorization = (role) => {
     };
 };
 
-module.exports = authorization;
+export default authorization;

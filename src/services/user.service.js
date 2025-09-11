@@ -1,4 +1,4 @@
-const UserRepository = require('../repositories/user.repository');
+import UserRepository from '../repositories/user.repository.js';
 const userRepository = new UserRepository();
 
 class UserService {
@@ -7,7 +7,6 @@ class UserService {
     }
 
     async getUserById(id) {
-        // Lógica de negocio si se requiere (ej. validación)
         return await userRepository.getById(id);
     }
 
@@ -24,4 +23,4 @@ class UserService {
     }
 }
 
-module.exports = UserService;
+export default UserService;

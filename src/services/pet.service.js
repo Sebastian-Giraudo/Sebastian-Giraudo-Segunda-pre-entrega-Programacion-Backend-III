@@ -1,4 +1,4 @@
-const PetRepository = require('../repositories/pet.repository');
+import PetRepository from '../repositories/pet.repository.js';
 const petRepository = new PetRepository();
 
 class PetService {
@@ -23,4 +23,4 @@ class PetService {
     }
 }
 
-module.exports = PetService;
+export default PetService;
